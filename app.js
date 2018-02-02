@@ -32,9 +32,9 @@ app.use((err, req, res, next) => {
   }
 })
 
-// app.set("port", process.env.PORT || 3001);
-// var server = app.listen(app.get("port"), () => {
-//   console.log("App Listening on Port: " + server.address().port);
-// })
+app.set("port", process.env.PORT || 3001);
+var server = app.listen(app.get("port"), () => {
+  console.log("App Listening on Port: " + server.address().port);
+})
 
-module.exports = app;
+// module.exports = app;
