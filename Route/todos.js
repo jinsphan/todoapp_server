@@ -8,7 +8,7 @@ const auth = jwt({
 
 var ctrlTodo = require("../controllers/todo_controller");
 
-router.get("/abc", (req, res) => {res.status(200).send("OK")});
+router.get("/abc", (req, res) => {res.status(200).send("Yeah")});
 router.get("/", auth, ctrlTodo.getTodosByUser);
 router.post("/", auth, ctrlTodo.addTodo);
 router.delete("/", auth, ctrlTodo.deleteTodos);
