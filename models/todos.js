@@ -4,10 +4,15 @@ var utils = require("./utils");
 const getTodosByUser = (user_id, callback) => {
   const statement = "SELECT * FROM todos WHERE user_id = ?";
   con.getConnection((err, sql) => {
-    sql.query(statement, [user_id], (er, result) => {
-      if (er || result.length === 0) callback(true);
-      else callback(null, result);
-    })
+    if (err) {
+      console.log("ERROR", err);
+      callback(true);
+    } else {
+      sql.query(statement, [user_id], (er, result) => {
+        if (er || result.length === 0) callback(true);
+        else callback(null, result);
+      })
+    }
   })
 }
 
