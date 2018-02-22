@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-var db = require("../config").db;
+var db = require("../../config").db;
 
 var con = mysql.createPool({
   connectionLimit: 1000,

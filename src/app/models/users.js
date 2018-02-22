@@ -1,32 +1,32 @@
 var con = require("./index");
 var utils = require("./utils");
-const getUser = (user, callback) => {
+const getUserByEmail = (email, callback) => {
   const statement = "SELECT * FROM users WHERE email = ?";
   con.getConnection((err, sql) => {
-    sql.query(statement, [user.email], (er, result) => {
+    sql.query(statement, [email], (er, result) => {
       if (er || result.length === 0) callback(true, null);
-      else callback(null, result);
+      else callback(null, result[0]);
     })
   })
 }
 
 const addUser = (user, cb) => {
-  const statement = "INSERT INTO users (email, password, fullname, role) VALUES (?, ?, ?, ?)";
+  const statement = "INSERT INTO users (email, password, fullname, role, status) VALUES (?, ?, ?, ?, ?)";
   con.getConnection((err, sql) => {
-    sql.query(statement, [user.email, user.password, user.fullname, user.role], (er, result) => {
+    sql.query(statement, [user.email, user.password, user.fullname, user.role, user.status], (er, result) => {
       if (er) cb(er, null);
       else {
-        getUser(user, (er, result) => {
+        getUserByEmail(user.email, (er, user) => {
           if (er) cb(er, null);
-          else cb(null, result[0]);
+          else cb(null, user);
         })
       }
     })
   })
 }
 
-const updateUser = (user, field, cb) => {
-  const statement = utils.getUpdateStatement("users", user.id, field);
+const updateUser = (user_id, field, cb) => {
+  const statement = utils.getUpdateStatement("users", user_id, field);
   con.getConnection((err, sql) => {
     sql.query(statement, (er, result) => {
       if (er) cb(er, null);
@@ -46,7 +46,7 @@ const changePassword = (id, field, cb) => {
 }
 
 module.exports = {
-  getUser,
+  getUserByEmail,
   addUser,
   updateUser,
   changePassword,

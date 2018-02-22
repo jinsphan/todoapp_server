@@ -1,6 +1,6 @@
 var nodemailer = require("nodemailer");
-var mail = require("../config/index").mail;
-var BASE_URL = require("../config/index").BASE_URL;
+var mail = require("../../config").mail;
+var BASE_URL = require("../../config").BASE_URL;
 var transporter = nodemailer.createTransport({
   service: mail.SERVICE,
   auth: {
@@ -63,11 +63,9 @@ const sendMail = (user, typeMail, cb) => {
   }
   transporter.sendMail(mailOptions, (er, res) => {
     if (er) {
-      cb(404);
-      console.log("Cant not send mail: " + er);
+      cb(404, "Error for send mail");
     } else {
-      cb(200);
-      console.log("Email sent: " + res.response);
+      cb(200, "Email sent");
     }
   })
 }

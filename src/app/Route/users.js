@@ -1,6 +1,6 @@
 var router = require("express").Router();
 var jwt = require("express-jwt");
-const KEY_SECRET = require("../config/index").KEY_SECRET;
+const KEY_SECRET = require("../../config").KEY_SECRET;
 const auth = jwt({
   secret: KEY_SECRET,
   userProperty: "payload",
