@@ -30,14 +30,14 @@ const loginNormaly = (user, callback) => {
   if (!vld.check) {
     callback(400, vld.errors);
   } else {
-    userModel.getUserByEmail(user.email, (er, user) => {
-      if(user) {
-        if (user.status !== 1) {
+    userModel.getUserByEmail(user.email, (er, _user) => {
+      if(_user) {
+        if (_user.status !== 1) {
           callback(404, {email: "Email inactive!"});
         } else {
-          bcrypt.compare(user.password, user.password, (er, check) => {
+          bcrypt.compare(user.password, _user.password, (er, check) => {
             if (check) {
-              callback(200, {token: _jwtGenerate(user)});
+              callback(200, {token: _jwtGenerate(_user)});
             } else {
               callback(404, {password: "Password incorrect!"});
             }

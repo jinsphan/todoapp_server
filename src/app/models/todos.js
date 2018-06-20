@@ -84,6 +84,7 @@ const checkedTodo = (user_id, todo_id, callback) => {
     else {
       con.getConnection((er, sql) => {
         sql.query(statement, [todo_id], (er, result) => {
+          console.log(er);
           if (er) callback(true);
           else callback(null, result);
         })

@@ -1,8 +1,8 @@
 const db = {
   DB_HOST: "localhost",
   DB_USER: "root",
-  DB_PASSWORD: "admin",
-  DB_NAME: "project_Todo"
+  DB_PASSWORD: "root",
+  DB_NAME: "todo_app"
 }
 
 const mail = {
