@@ -7,8 +7,8 @@ const cors       = require('cors');
 const app        = express();
 const apiRoute   = require("./Route");
 
-// app.use(cors()); // Allow accept origin
-app.use(middleware.setHeader);
+app.use(cors()); // Allow accept origin
+// app.use(middleware.setHeader);
 
 // Assets
 app.use("/assets", express.static("assets"));
