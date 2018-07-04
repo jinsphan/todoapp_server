@@ -1,12 +1,11 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const isEmpty = require("lodash").isEmpty;
-const KEY_SECRET = require("../../config.js").KEY_SECRET;
+const bcrypt               = require("bcrypt");
+const jwt                  = require("jsonwebtoken");
+const isEmpty              = require("lodash").isEmpty;
+const KEY_SECRET           = require("../../config.js").KEY_SECRET;
 const { utils, validator } = require("../../lib");
 
-const userModel = require("../models/users");
-
-const saltRounds = 10;
+const userModel            = require("../models/users");
+const saltRounds           = 10;
 
 // -------------- User Controller -------------
 

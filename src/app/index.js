@@ -1,11 +1,11 @@
-const express = require("express");
+const express    = require("express");
 const bodyParser = require("body-parser");
-const logger = require("morgan");
+const logger     = require("morgan");
 const middleware = require("./middleware");
-const cors = require('cors');
+const cors       = require('cors');
 
-const app = express();
-const apiRoute = require("./Route");
+const app        = express();
+const apiRoute   = require("./Route");
 
 // app.use(cors()); // Allow accept origin
 app.use(middleware.setHeader);
@@ -15,7 +15,7 @@ app.use("/assets", express.static("assets"));
 
 // Middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(logger("dev")); // Show on console detail requests
 
