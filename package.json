@@ -6,6 +6,7 @@
   "dependencies": {
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "debug": "^3.1.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
@@ -25,7 +26,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=local nodemon src",
-    "start:production": "NODE_ENV=production node src"
+    "start:heroku": "NODE_ENV=production node src"
   },
   "author": "me",
   "license": "ISC"

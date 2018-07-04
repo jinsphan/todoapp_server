@@ -22,7 +22,7 @@ const KEY_SECRET = "jrtinh";
 let BASE_URL = "http://localhost:3000";
 
 if (process.env.NODE_ENV == "production") {
-  BASE_URL = "https://jinsphan-todoapp.herokuapp.com/"
+  BASE_URL = "https://jinsphan-todoapp.herokuapp.com"
 }
 
 module.exports = {
